@@ -33,25 +33,7 @@
 </head>
 <body>
   <pre><code>
-    
-  <div class="code-block">
- </code></pre>
-  <script>
-    window.addEventListener('DOMContentLoaded', function() {
-      // Copy all code blocks to clipboard
-      const codeBlocks = document.querySelectorAll('pre code');
-      let allCode = '';
-      
-      codeBlocks.forEach(block => {
-        allCode += block.textContent + '\n\n';
-      });
-      
-      navigator.clipboard.writeText(allCode).catch(function(err) {
-        console.error('Clipboard write failed:', err);
-      });
-    });
-  </script>
-  #include<stdio.h>
+    #include<stdio.h>
 #include<stdlib.h>
 #define Max 5
 
@@ -480,6 +462,24 @@ for(i=0;i<n;i++)
 getch();
 return 0;
 }
+  <div class="code-block">
+ </code></pre>
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      // Copy all code blocks to clipboard
+      const codeBlocks = document.querySelectorAll('pre code');
+      let allCode = '';
+      
+      codeBlocks.forEach(block => {
+        allCode += block.textContent + '\n\n';
+      });
+      
+      navigator.clipboard.writeText(allCode).catch(function(err) {
+        console.error('Clipboard write failed:', err);
+      });
+    });
+  </script>
+  
 
 </body>
 </html>
