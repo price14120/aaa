@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error 404</title>
+  <style>
+    body {
+      background-color: white;
+      color: white;
+      font-family: 'Courier New', monospace;
+      padding: 20px;
+      line-height: 1.5;
+    }
+    pre {
+      background-color: white;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      margin: 10px 0;
+    }
+    .code-block {
+      margin-bottom: 30px;
+    }
+    h2 {
+      color: white;
+      margin-top: 30px;
+      border-bottom: 1px solid white;
+      padding-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <pre><code>
+    
+  <div class="code-block">
+ </code></pre>
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      // Copy all code blocks to clipboard
+      const codeBlocks = document.querySelectorAll('pre code');
+      let allCode = '';
+      
+      codeBlocks.forEach(block => {
+        allCode += block.textContent + '\n\n';
+      });
+      
+      navigator.clipboard.writeText(allCode).catch(function(err) {
+        console.error('Clipboard write failed:', err);
+      });
+    });
+  </script>
+  #include<stdio.h>
+#include<stdlib.h>
+#define Max 5
+
+struct stack{
+	int arr[Max];
+	int top;
+
+}st;
+
+void push();
+void pop();
+void display();
+
+int main(){
+	
+	int choice;
+	st.top = -1;
+	do{
+		printf("\n\n\t1.push an element into stack:-");
+		printf("\n\n\t 2. pop an element from stack :-"); 
+   		printf("\n\n\t 3. display the elements of the  stack :-"); 
+   		printf("\n\n\t 4. Exit from the program"); 
+   		
+		printf("\n\n\t enter your choice:-");
+		scanf("%d",&choice);
+		
+		switch(choice){
+			
+			case 1:
+				push();
+				break;
+				
+			case 2:
+				pop();
+				break;
+				
+			case 3:
+				void display();
+				break;
+				
+			default:
+				printf("\n\n\t Wrong entry try again");
+				break;
+		}
+	}while(choice != 4)
+	
+	return 0;
+}
+
+void push(){
+	int item;
+	if(st.top == Max -1){
+		printf("The Stack is full\n");
+	}else{
+		printf("\nEnter the element to be pushed into to the stack");
+		scanf("%d",&item);
+		st.top++;
+			st.arr[st.top] = item;
+	}
+}
+
+void pop(){
+	
+	if(st.top == -1){
+		printf("\nStack is Empty");
+	}else{
+		int item;
+		item = st.arr[st.top];
+		st.top--;
+		printf("\nthe pop element is : %d",item);
+	}
+}
+
+void display(){
+	if(st.top == -1){
+		printf("\nThe stack is empty");
+	}else{
+		printf("\nThe contects of the stack are");
+		int i;
+		for(i=st.top; i>=0; i--){
+			printf("%d\t",st.arr[i]);
+		}
+	}
+}
+-------------------------------------------------------------------
+#include<stdio.h>
+#define MAX 10
+
+typedef struct stack{
+	int data[MAX];
+	int top;
+}stack;
+
+int empty(stack *s){
+	if(s->top == -1){
+		return 1;
+	}
+	return 0;
+}
+
+int full(stack *s){
+	if(s->top == MAX -1)
+		return 1;
+		
+	return 0;
+}
+
+void push(stack *s, int x){
+	s->top = s->top+1;
+	s->data[s->top] = x;
+}
+
+int pop(stack *s){
+	int x;
+	x = s->data[s->top];
+	s->top = s->top -1;
+	return x;
+}
+
+void main(){
+	stack s;
+	int num;
+	
+	s.top = -1;
+	
+	printf("\nEnter decimal number: ");
+	scanf("%d",&num);
+	
+	while(num != 0){
+		if(!full(&s)){
+			push(&s,num%2);
+			num = num/2;
+		}else{
+			printf("\nStack overflow");
+			exit(0);
+		}
+	}
+	
+	printf("\nBinary Number is: ");
+	while(!empty(&s)){
+		num = pop(&s);
+		printf("%d",num);
+	}
+	printf("\n");
+	
+}
+-----------------------------------------------------------------------------
+#include<stdio.h>
+#include<stdlib.h>
+#define n 5
+
+int main(){
+	int queue[n],ch=1,front=0,rear=0,j=1,x=n;
+	
+	printf("\n1.Enqueue \n2.Dequeue \n3.Display \n4.Exit");
+	
+	while(ch){
+		printf("Enter the choice:");
+		scanf("%d",&ch);
+		
+		switch(ch){
+			
+			case 1:
+				if(rear == x){
+					printf("\nQueue is Full");
+				}else{
+					printf("\nEnter no %d:",j++);
+					scanf("%d",&queue[rear++]);
+				}
+				break;
+				
+			case 2:
+				if(front == rear){
+					printf("\nQueu is a empty");
+				}else{
+					printf("\nDeleted Element is %d",queue[front++]);
+					x++;
+				}
+				break;
+				
+			case 3:
+				printf("\nQueue Elements are:\n");
+				if(front==rear){
+					printf("\nQueue is Empty");
+				}else{
+					for(i=front;i<rear;i++){
+						printf("%d",queue[i]);
+						printf("\n");
+					}
+				}
+				break;
+				
+			case 4:
+				default:
+					printf("Invalide choice");
+		}
+	}
+}
+------------------------------------------------------------------------
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX 5
+
+int queue_array[MAX];
+int front = -1;
+int rear = -1;
+int element;
+
+void enqueu_array(int element);
+int dequeu();
+int isEmpty();
+int isFull();
+int peek();
+void display();
+
+void main(){
+	int option;
+	while(1){
+		printf("\n1. Insert Element in Queue"); 
+		printf("\n2. Delete Element from Queue"); 
+		printf("\n3. Display All the Elements of Queue"); 
+		printf("\n4. Display Element at the Front position");
+		
+		printf("\nEnter your option:\t");
+		scanf("%d",option);
+		
+		switch(option){
+			
+			case 1:
+				printf("\nInsert Element:");
+				scanf("%d",&element);
+				enqueue(element);
+				break;
+				
+			case 2:
+				element == dequeue();
+				printf("\nDeleted Element: %d",element);
+				break;
+				
+			case 3:
+				display();
+				break;
+				
+			case 4:
+				printf("\nElement front: %d",peek());
+				break;
+				
+			case 5:
+				exit(1);
+		}
+	}
+	printf("\n");
+}
+
+void enqueue(int element){
+	if(isFull()){
+		printf("\nQueue if full.\n");
+		return;
+	}else if(front == -1){
+		front = 0;
+	}
+	rear = rear + 1;
+	queue_array[rear] = element;
+	
+}
+
+
+int dequeue(){
+	int item;
+	if(isEmpty()){
+		printf("\nQueue is Empty");
+		return 1;
+	}
+	else{
+		item = queue_array[front];
+		front = front +1;
+		return item;
+	}
+}
+
+int isEmpty(){
+	if(front==-1 || front==rear+1){
+		return 1;
+	}else{
+		return 0;
+	}
+}
+
+int isFull(){
+	if(rear == MAX -1){
+		return 1;
+	}else{
+		return 0;
+	}
+}
+
+int peek(){
+	if(isEmpty()){
+		printf("\nQueue is Empty");
+		exit(1);
+	}else{
+		return queue_array[front];
+	}
+}
+
+void display(){
+	int i;
+	for(i=front;i<=rear;i++){
+		printf("%d",queue_array[i]);
+	}
+-------------------------------------------------------------------------------------------
+SS
+-------------
+#include<stdio.h>
+#include<conio.h>
+
+int main(){
+	
+	int arr[25],n,i,min,j,temp;
+	
+	printf("Enter the element size array:");
+	scanf("%d",&n);
+	
+	for(i=0;i<n;i++){
+		printf("\narray[%d]",i);
+		scanf("%d",&arr[i]);
+	}
+	
+	for(i=0;i<n-1;i++){
+		min=i;
+		
+		for(j=i+1;j<n;j++){
+			if(arr[j]<arr[min]){
+				min=j;
+			}
+		}
+		if(min != i){
+			temp = arr[i];
+			arr[i] = arr[min];
+			arr[min] = temp;
+		}
+	}
+	
+	printf("Sorted array: \n");
+	for(i=0;i<n;i++){
+		printf("%d  ",arr[i]);
+	}
+	getch();
+	return 0;
+}
+-------------------------------------------------------
+BS
+-----------------------------------
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(){
+	int i,n,temp,j,arr[25];
+	
+	printf("\nEnter element in array: ");
+	scanf("%d",&n);
+	
+	printf("Enter the element: ");
+	
+	for(i=0;i<n;i++){
+		printf("\narr[%d]",i);
+		scanf("%d",&arr[i]);
+	}
+	
+	for(i=0;i<n;i++){
+		for(j=0;j<n-1;j++){
+			
+			if(arr[j]>arr[j+1]){
+				temp = arr[j];
+				arr[j] = arr[j+1];
+				arr[j+1] = temp;
+			}
+		}
+	}
+	
+	printf("\nSecond sorted array");
+	for(i=0;i<n;i++){
+		printf(" %d",arr[i]);
+	}
+	
+	return 0;
+}
+----------------------------------------------------------
+IS
+-------------------------------------------------------
+#include <stdio.h>
+#include <conio.h>
+
+int main(){
+int arr[20],i,j,k,n,temp;
+
+printf("\nEnter number of element in array");
+scanf("%d",&n);
+
+printf("\nEnter elements in array");
+
+for(i=0;i<n;i++){
+printf("arr[%d] ",i);
+scanf("%d",&arr[i]);
+}
+
+for(i=1;i<n;i++){
+temp=arr[i];
+j=i-1;
+
+while((j>=0)&&(temp<arr[j]))
+{
+arr[j+1]=arr[j];
+j--;                            
+}
+
+arr[j+1]=temp;
+}
+
+printf("Sorted array is:\n");
+for(i=0;i<n;i++)
+{
+ printf("%d\t",arr[i]);
+}
+getch();
+return 0;
+}
+
+</body>
+</html>
